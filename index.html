@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>المشغل</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎬 المشغل</h1>
+      <div id="status" class="status">جاري التحميل...</div>
+      <div id="qualities" class="qualities"></div>
+      <div class="player">
+        <video id="video" controls playsinline></video>
+      </div>
+      <p class="note">
+        ملاحظة: قد تتطلب بعض المصادر ترويسات خاصة (Referer, User-Agent). تشغيل الفيديو داخل المتصفح قد يفشل بسبب CORS. إن لم يعمل، افتح الرابط المباشر خارجيًا.
+      </p>
+    </div>
+    <script src="app.js"></script>
+  </body>
+  </html>
+
+
