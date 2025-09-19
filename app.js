@@ -24,17 +24,56 @@ function setStatus(msg) {
 
 function play(url) {
   const video = document.getElementById('video');
-  if (Hls.isSupported() && /\.m3u8(\b|$)/i.test(url)) {
-    const hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+  video.onerror = null;
+
+  // أضف زر فتح خارجيًا دائماً
+  let openBtn = document.getElementById('open-external-btn');
+  if (openBtn) openBtn.remove();
+  openBtn = createButton('فتح الرابط خارجيًا', () => window.open(url, '_blank'));
+  openBtn.id = 'open-external-btn';
+  document.getElementById('qualities').appendChild(openBtn);
+
+  // التعامل مع m3u8
+  if (/\.m3u8(\b|$)/i.test(url)) {
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = url;
       video.play();
-    });
-  } else {
+    } else if (window.Hls && Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        video.play();
+      });
+      hls.on(Hls.Events.ERROR, function () {
+        setStatus('تعذر تشغيل فيديو m3u8، حاول فتح الرابط خارجيًا.');
+      });
+    } else {
+      setStatus('متصفحك لا يدعم m3u8 مباشرة أو عبر Hls.js.');
+    }
+    return;
+  }
+
+  // الأنواع الشائعة
+  if (
+    /\.mp4(\b|$)/i.test(url) ||
+    /\.webm(\b|$)/i.test(url) ||
+    /\.ogg(\b|$)/i.test(url)
+  ) {
     video.src = url;
     video.play();
+    video.onerror = function () {
+      setStatus('تعذر تشغيل الفيديو، حاول فتح الرابط خارجيًا.');
+    };
+    return;
   }
+
+  // أي نوع آخر: جرب تشغيله مباشرة
+  video.src = url;
+  video.play();
+  video.onerror = function () {
+    setStatus('نوع الفيديو غير مدعوم أو تعذر تشغيله، حاول فتح الرابط خارجيًا.');
+  };
 }
 
 function init() {
@@ -55,5 +94,3 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-
