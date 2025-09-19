@@ -1,0 +1,161 @@
+body {
+  background: #15151e;
+  color: #fff;
+  font-family: 'Cairo', Arial, sans-serif;
+  margin: 0;
+}
+
+.header {
+  background: linear-gradient(90deg, #21213a 60%, #323251 100%);
+  padding: 18px 0;
+  text-align: center;
+  font-size: 2.1em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  box-shadow: 0 2px 8px #0006;
+}
+
+.logo {
+  color: #e50914;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 1em;
+}
+
+.container {
+  max-width: 480px;
+  margin: 30px auto;
+  background: #222233ee;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #0007;
+  padding: 25px 12px 32px 12px;
+  min-height: 320px;
+}
+
+h2, h3 {
+  margin: 14px 0 10px 0;
+  font-weight: bold;
+  color: #e50914;
+  font-size: 1.2em;
+}
+
+#episodes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.episode-btn {
+  background: #2d2d3c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 1em;
+  margin: 5px 0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0003;
+  transition: background 0.2s, transform 0.15s;
+}
+.episode-btn:hover, .quality-btn:hover {
+  background: #e50914;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#qualities {
+  margin-bottom: 10px;
+}
+
+#quality-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 5px;
+  justify-content: flex-start;
+}
+
+.quality-btn {
+  background: #191926;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 0.97em;
+  cursor: pointer;
+  box-shadow: 0 1px 4px #0003;
+  transition: background 0.2s, transform 0.15s;
+}
+
+#video-area {
+  margin: 18px 0 0 0;
+  text-align: center;
+}
+
+#video {
+  width: 100%;
+  max-width: 370px;
+  background: #101018;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px #0005;
+}
+
+#status {
+  margin: 10px 0 0 0;
+  color: #FEC107;
+  background: #222233;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.98em;
+  min-height: 24px;
+}
+
+#external-link {
+  margin: 16px 0 0 0;
+  text-align: center;
+}
+
+#open-external-btn {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 8px #0003;
+  margin-top: 6px;
+}
+
+#back-btn {
+  background: #222233;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 16px;
+  font-size: 0.97em;
+  cursor: pointer;
+  font-weight: bold;
+}
+#back-btn:hover {
+  background: #e50914;
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 99vw;
+    padding: 14px 2vw 22px 2vw;
+  }
+  #video {
+    max-width: 96vw;
+  }
+}
