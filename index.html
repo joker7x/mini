@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>المشغل</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h1>🎬 المشغل</h1>
-      <div id="status" class="status">جاري التحميل...</div>
-      <div id="qualities" class="qualities"></div>
-      <div class="player">
-        <video id="video" controls playsinline></video>
-      </div>
-      <p class="note">
-        ملاحظة: قد تتطلب بعض المصادر ترويسات خاصة (Referer, User-Agent). تشغيل الفيديو داخل المتصفح قد يفشل بسبب CORS. إن لم يعمل، افتح الرابط المباشر خارجيًا.
-      </p>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <title>MiniStream</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="mini-app-style.css" />
+</head>
+<body>
+  <div class="header">
+    <span class="logo">🎬 MiniStream</span>
+  </div>
+  <div class="container">
+    <div id="episodes-area">
+      <h2>اختر الحلقة</h2>
+      <div id="episodes-list"></div>
     </div>
-    <script src="app.js"></script>
-  </body>
-  </html>
-
-
+    <div id="player-area" style="display:none;">
+      <div class="player-header">
+        <span id="episode-title"></span>
+        <button id="back-btn">⬅️ العودة للحلقات</button>
+      </div>
+      <div id="qualities">
+        <h3>اختر الجودة:</h3>
+        <div id="quality-buttons"></div>
+      </div>
+      <div id="video-area">
+        <video id="video" controls poster="cinema-poster.png"></video>
+        <div id="status"></div>
+      </div>
+      <div id="external-link" style="display:none;">
+        <button id="open-external-btn">فتح الرابط خارجيًا</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="app.js"></script>
+</body>
+</html>
